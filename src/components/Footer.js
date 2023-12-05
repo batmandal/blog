@@ -44,7 +44,7 @@ export function Footer(params) {
         <div className="border-t-2 border-gray-400 w-[1215px] flex py-[20.5px] items-center justify-between">
           <FooterLogo />
           <div className="grid grid-cols-3">
-            <a className="border-r-2 border-gray-400">Terms of Use</a>
+            <a className="border-r-2 mr- border-gray-400">Terms of Use</a>
             <a className="border-r-2 border-gray-400">Privacy Policy</a>
             <a>Cookie Policy</a>
           </div>
