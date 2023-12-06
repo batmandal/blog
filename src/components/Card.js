@@ -1,17 +1,15 @@
-import { Car } from "@/assets/svg/Car";
-export function Card(props) {
+export const Card = (props) => {
   return (
-    <div>
+    <div className="p-[16px] gap-[16px] flex flex-col border-gray-300 border-solid border-2 rounded-xl ">
       <div>
-        <Car />
+        <img src={props.pic} p />
       </div>
-      <div className="m-[16px] p-[8px] flex flex-col gap-[16px]">
-        <span className="text-[#4B6BFB] py-[10px] px-[4px]">Technology</span>
-        <p>
-          The impact of Technology on the Workplace: How Technology is Changing
-        </p>
-        <p>August 20, 2022</p>
+
+      <div className="flex flex-col gap-[16px]">
+        <span>{props.category}</span>
+        <h3>{props.title}</h3>
+        <p>{props.date}</p>
       </div>
     </div>
   );
-}
+};

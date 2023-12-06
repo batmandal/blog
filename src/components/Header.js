@@ -1,21 +1,20 @@
 import { Logo } from "@/assets/svg/Logo";
-import { Menu } from "@/assets/svg/Menu";
+
 export function Header() {
   return (
-    <div className="p-[20px] h-[72px] w-full ">
-      <div className="flex w-[1215px] justify-between m-auto">
+    <div className="p-[20px] h-[72px] max-w-[1215px] m-auto">
+      <div className="flex justify-between m-auto">
         <Logo />
         <div className="flex gap-[40px]">
-          <a>Home</a>
-          <a>Blog</a>
+          <a href="">Home</a>
+          <a href="/blogs">Blog</a>
           <a>Contact</a>
         </div>
 
-        {/* <Menu /> */}
         <input
           type="text"
           placeholder="search"
-          className="border-solid border-black"
+          className="border-solid border-black border rounded"
         ></input>
       </div>
     </div>

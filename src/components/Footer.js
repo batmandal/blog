@@ -6,8 +6,8 @@ import { TwitterLogo } from "@/assets/svg/TwitterLogo";
 
 export function Footer(params) {
   return (
-    <div className="w-full bg-[#E8E8EA]">
-      <div className="w-[1215px] m-auto">
+    <div className="max-w-[1215px] bg-[#E8E8EA] m-auto">
+      <div className=" m-auto">
         <div className="grid grid-cols-3 mb-[25px]">
           <div className="flex flex-col gap-[24px]">
             <h4>About</h4>
@@ -41,7 +41,7 @@ export function Footer(params) {
             </a>
           </div>
         </div>
-        <div className="border-t-2 border-gray-400 w-[1215px] flex py-[20.5px] items-center justify-between">
+        <div className="border-t-2 border-gray-400  flex py-[20.5px] items-center justify-between">
           <FooterLogo />
           <div className="grid grid-cols-3">
             <a className="border-r-2 mr- border-gray-400">Terms of Use</a>
