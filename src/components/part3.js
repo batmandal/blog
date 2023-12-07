@@ -32,7 +32,7 @@ export function Blog(params) {
     setPages(pages + 3);
   }
   return (
-    <div className="max-w-[1215px] m-auto">
+    <div className="max-w-[1215px] py-[48px] m-auto">
       {isLoading && <Loader />}
       {error && <h2>{error}</h2>}
       {!isLoading && !error && (
@@ -62,7 +62,12 @@ export function Blog(params) {
                 );
               })}
             </div>
-            <button onClick={morePages}>Load More</button>
+            <button
+              className="px-[20px] py-[12px] text-[#696A75] border m-auto w-fit h-fit border-solid rounded-md border-[#696A754D] "
+              onClick={morePages}
+            >
+              Load More...
+            </button>
           </div>
         </div>
       )}
