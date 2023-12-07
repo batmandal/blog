@@ -38,9 +38,9 @@ export function Blog(params) {
       {!isLoading && !error && (
         <div>
           <div className="flex flex-col gap-[32px]">
-            <h2>All Blog Post</h2>
+            <h2 className="font-bold text-2xl">All Blog Post</h2>
             <div className="flex justify-between">
-              <div className="flex gap-[20px]">
+              <div className="flex gap-[20px] text-xs font-bold text-[#495057]">
                 <a href="https://www.rfc-editor.org/rfc/rfc9110#HEAD">All</a>
                 <a>Design</a>
                 <a>Travel</a>
@@ -48,7 +48,7 @@ export function Blog(params) {
                 <a>Technology</a>
                 <a>Branding</a>
               </div>
-              <a>View All</a>
+              <a className="font-bold text-xs text-[#495057]">View All</a>
             </div>
             <div className="grid grid-cols-3 gap-[20px]">
               {blogs.map((blog) => {

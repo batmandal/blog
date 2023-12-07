@@ -8,7 +8,7 @@ export function Header() {
         <div className="flex gap-[40px]">
           <a href="/">Home</a>
           <a href="/blogs">Blog</a>
-          <a>Contact</a>
+          <a href="/contact">Contact</a>
         </div>
 
         <input

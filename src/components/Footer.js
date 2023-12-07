@@ -6,11 +6,11 @@ import { TwitterLogo } from "@/assets/svg/TwitterLogo";
 
 export function Footer(params) {
   return (
-    <div className="max-w-[1215px] bg-[#E8E8EA] m-auto">
-      <div className=" m-auto">
+    <div className="w-full bg-[#E8E8EA] m-auto pt-[64px]">
+      <div className=" m-auto max-w-[1215px]">
         <div className="grid grid-cols-3 mb-[25px]">
           <div className="flex flex-col gap-[24px]">
-            <h4>About</h4>
+            <h4 className="text-lg font-semibold">About</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
