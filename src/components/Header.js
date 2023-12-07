@@ -1,9 +1,10 @@
 import { Logo } from "@/assets/svg/Logo";
+import { Search } from "@/assets/svg/Search";
 
 export function Header() {
   return (
-    <div className="p-[20px] h-[72px] max-w-[1215px] m-auto">
-      <div className="flex justify-between m-auto">
+    <div className="p-[20px] h-[72px] w-full m-auto">
+      <div className="flex max-w-[1215px] justify-between m-auto">
         <Logo />
         <div className="flex gap-[40px]">
           <a href="/">Home</a>
@@ -14,7 +15,7 @@ export function Header() {
         <input
           type="text"
           placeholder="search"
-          className="border-solid border-black border rounded"
+          className=" rounded bg-[#F4F4F5] px-[16px] py-[3px]"
         ></input>
       </div>
     </div>

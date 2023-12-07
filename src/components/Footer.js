@@ -24,7 +24,7 @@ export function Footer(params) {
           <div className="flex flex-col items-center">
             <a href="/">Home</a>
             <a href="blogs">Blog</a>
-            <a>Contact</a>
+            <a href="contact">Contact</a>
           </div>
           <div className="flex gap-[27px]">
             <a>

@@ -16,7 +16,7 @@ export function Page1(props) {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?top3&per_page=${pages}&page=4
+          await getData(`https://dev.to/api/articles?per_page=${pages}&page=4
         `);
         console.log(data);
         setBlogs(data);
@@ -42,8 +42,8 @@ export function Page1(props) {
       {isLoading && <Loader />}
       {error && <h2>{error}</h2>}
       {!isLoading && !error && (
-        <div className="m-auto">
-          <div className=" w-[1216px] h-[600px] overflow-hidden rounded-xl border-4 border-black border-solid">
+        <div className="m-auto grid gap-[11px]">
+          <div className=" w-[1216px] h-[600px] overflow-hidden rounded-xl ">
             <div
               className="flex w-[600%]"
               onTransitionStart={() => {
@@ -99,7 +99,7 @@ export function Page1(props) {
                 setOnTransition(true);
                 setWithTransition(true);
               }}
-              className="border border-solid border-gray-400 rounded-md py-[10px] px-[13px]"
+              className="border border-solid border-gray-400 rounded-md py-[10px] px-[16px]"
             >{`<`}</button>
             <button
               onClick={() => {
@@ -108,7 +108,7 @@ export function Page1(props) {
                 setOnTransition(true);
                 setWithTransition(true);
               }}
-              className="border border-solid border-gray-400 rounded-md py-[10px] px-[13px]"
+              className="border border-solid border-gray-400 rounded-md py-[10px] px-[16px]"
             >{`>`}</button>
           </div>
         </div>
@@ -122,12 +122,14 @@ export function TopBlog(props) {
       <div className="">
         <img className="w-full h-[600px] bg-cover" src={props.pic} />
       </div>
-      <div className="z-10 border-4 border-black border-solid text-red-900 bg-white mx-[11px] my-[13px] rounded-xl w-[50%] h-[50%] absolute">
-        <div>
-          <span>{props.category}</span>
-          <p>{props.title}</p>
+      <div className="z-10 p-[40px] grid gap-[24px] bg-white mx-[11px] my-[13px] rounded-xl w-[50%] h-fit absolute">
+        <div className="grid gap-[16px] ">
+          <span className="rounded-md w-fit h-fit bg-[#4B6BFB] px-[10px] py-[4px] text-white">
+            {props.category}
+          </span>
+          <p className="text-4xl font-semibold">{props.title}</p>
         </div>
-        <p>{props.date}</p>
+        <p className="font-normal text-[#97989F] text-base">{props.date}</p>
       </div>
     </div>
   );

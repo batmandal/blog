@@ -40,7 +40,7 @@ export function Blog(params) {
           <div className="flex flex-col gap-[32px]">
             <h2 className="font-bold text-2xl">All Blog Post</h2>
             <div className="flex justify-between">
-              <div className="flex gap-[20px] text-xs font-bold text-[#495057]">
+              <div className="flex gap-[20px] text-xs font-bold text-[#495057] ">
                 <a href="https://www.rfc-editor.org/rfc/rfc9110#HEAD">All</a>
                 <a>Design</a>
                 <a>Travel</a>
