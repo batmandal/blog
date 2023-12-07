@@ -14,7 +14,7 @@ export function Blog(params) {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?per_page=${pages}
+          await getData(`https://dev.to/api/articles?per_page=${pages}&page=6
         `);
         console.log(data);
         setBlogs(data);

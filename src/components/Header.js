@@ -6,7 +6,7 @@ export function Header() {
       <div className="flex justify-between m-auto">
         <Logo />
         <div className="flex gap-[40px]">
-          <a href="">Home</a>
+          <a href="/">Home</a>
           <a href="/blogs">Blog</a>
           <a>Contact</a>
         </div>
