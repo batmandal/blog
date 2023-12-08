@@ -46,11 +46,11 @@ export default function Contact(params) {
             placeholder="subject"
             className="rounded-md border border-solid border-[#DCDDDF] px-[18px] py-[5px] "
           ></input>
-          <input
+          <textarea
             type="text"
             placeholder="Text messsage"
             className="rounded-md border border-solid border-[#DCDDDF] p-[18px] min-h-[134px] text-start"
-          ></input>
+          ></textarea>
         </div>
 
         <button className="px-[16px] py-[10px] w-fit bg-[#4B6BFB] text-white rounded-md">

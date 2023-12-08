@@ -4,7 +4,7 @@ import { Card } from "@/components/Card";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/Loader";
 
-export default function Blog(params) {
+export default function BlogPage(params) {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");

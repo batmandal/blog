@@ -4,7 +4,7 @@ import { Card } from "@/components/Card";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/Loader";
 
-export function Blog(params) {
+export function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -41,29 +41,41 @@ export function Blog(params) {
             <h2 className="font-bold text-2xl">All Blog Post</h2>
             <div className="flex justify-between">
               <div className="flex gap-[20px] text-xs font-bold text-[#495057] ">
-                <a href="https://www.rfc-editor.org/rfc/rfc9110#HEAD">All</a>
-                <a>Design</a>
-                <a>Travel</a>
-                <a>Fashion</a>
-                <a>Technology</a>
-                <a>Branding</a>
+                <a
+                  className="hover:text-[#D4A373]"
+                  href="https://www.rfc-editor.org/rfc/rfc9110#HEAD"
+                >
+                  All
+                </a>
+                <a className="hover:text-[#D4A373]">Design</a>
+                <a className="hover:text-[#D4A373]">Travel</a>
+                <a className="hover:text-[#D4A373]">Fashion</a>
+                <a className="hover:text-[#D4A373]">Technology</a>
+                <a className="hover:text-[#D4A373]">Branding</a>
               </div>
-              <a className="font-bold text-xs text-[#495057]">View All</a>
+              <a
+                href="/blogs"
+                className="font-bold text-xs text-[#495057] hover:text-[#D4A373]"
+              >
+                View All
+              </a>
             </div>
             <div className="grid grid-cols-3 gap-[20px]">
               {blogs.map((blog) => {
                 return (
-                  <Card
-                    pic={blog["cover_image"]}
-                    title={blog.title}
-                    date={blog["readable_publish_date"]}
-                    category={blog["type_of"]}
-                  />
+                  <a href={`/blogs/${blog.id}`} key={blog.id}>
+                    <Card
+                      pic={blog["cover_image"]}
+                      title={blog.title}
+                      date={blog["readable_publish_date"]}
+                      category={blog["type_of"]}
+                    />
+                  </a>
                 );
               })}
             </div>
             <button
-              className="px-[20px] py-[12px] text-[#696A75] border m-auto w-fit h-fit border-solid rounded-md border-[#696A754D] "
+              className="px-[20px] py-[12px] text-[#696A75] border m-auto w-fit h-fit border-solid rounded-md border-[#696A754D] hover:bg-[#4B6BFB0D] hover:text-[#4B6BFB] "
               onClick={morePages}
             >
               Load More...

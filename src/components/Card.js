@@ -1,8 +1,12 @@
+"use client";
 export const Card = (props) => {
   return (
-    <div className="p-[16px] gap-[16px] flex flex-col border-gray-300 border-solid border-2 rounded-xl ">
+    <div
+      className="p-[16px] gap-[16px] flex flex-col border-gray-300 border-solid border-2 rounded-xl "
+      // id={props.id}
+    >
       <div>
-        <img className="rounded-md" src={props.pic} p />
+        <img className="rounded-md" src={props.pic} />
       </div>
 
       <div className="flex flex-col gap-[16px]">

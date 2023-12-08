@@ -7,16 +7,16 @@ export function Page1(props) {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [pages, setPages] = useState(3);
+  const [pages, setPages] = useState(4);
   const [indexCarousel, setIndexCarousel] = useState(1);
   const [withTransition, setWithTransition] = useState(true);
-  const [onTransition, setOnTransition] = useState(false);
+  const [isOnTransition, setIsOnTransition] = useState(false);
 
   useEffect(() => {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?per_page=${pages}&page=4
+          await getData(`https://dev.to/api/articles?top3&per_page=${pages}
         `);
         console.log(data);
         setBlogs(data);
@@ -30,13 +30,6 @@ export function Page1(props) {
     getBlogs();
   }, []);
 
-  // function right() {
-  //   return setIndexCarousel((prev) => prev + 1);
-  // }
-  // function left() {
-  //   return setIndexCarousel((prev) => prev - 1);
-  // }
-
   return (
     <div className="flex flex-col items-center">
       {isLoading && <Loader />}
@@ -45,38 +38,35 @@ export function Page1(props) {
         <div className="m-auto grid gap-[11px]">
           <div className=" w-[1216px] h-[600px] overflow-hidden rounded-xl ">
             <div
-              className="flex w-[600%]"
+              className="flex w-[800%]"
               onTransitionStart={() => {
-                setOnTransition(true);
+                setIsOnTransition(true);
               }}
               onTransitionEnd={() => {
-                if (indexCarousel === 5) {
-                  return setIndexCarousel(2);
+                if (indexCarousel === 0) {
+                  setIndexCarousel(4);
+                  setWithTransition(false);
                 }
 
-                if (indexCarousel === 0) {
-                  return setIndexCarousel(3);
+                if (indexCarousel === 5) {
+                  setIndexCarousel(1);
+                  setWithTransition(false);
                 }
-                setOnTransition(false);
-                setWithTransition(false);
+                setIsOnTransition(false);
               }}
               style={{
-                transform: `translateX(-${(indexCarousel * 100) / 6}%)`,
-                transition: withTransition
-                  ? `transform 0.4s ease-in-out`
-                  : "none",
+                transform: `translateX(-${(indexCarousel * 100) / 8}%)`,
+                transition: withTransition ? `400ms` : "none",
               }}
             >
               {blogs.map((blog) => {
                 return (
-                  <>
-                    <TopBlog
-                      pic={blog["cover_image"]}
-                      title={blog.title}
-                      date={blog["readable_publish_date"]}
-                      category={blog["type_of"]}
-                    />
-                  </>
+                  <TopBlog
+                    pic={blog["cover_image"]}
+                    title={blog.title}
+                    date={blog["readable_publish_date"]}
+                    category={blog["type_of"]}
+                  />
                 );
               })}
               {blogs.map((blog) => {
@@ -94,18 +84,18 @@ export function Page1(props) {
           <div className="flex justify-end gap-[9px]">
             <button
               onClick={() => {
-                if (onTransition) return;
+                if (isOnTransition) return;
                 setIndexCarousel((prev) => prev - 1);
-                setOnTransition(true);
+                setIsOnTransition(true);
                 setWithTransition(true);
               }}
               className="border border-solid border-gray-400 rounded-md py-[10px] px-[16px]"
             >{`<`}</button>
             <button
               onClick={() => {
-                if (onTransition) return;
+                if (isOnTransition) return;
                 setIndexCarousel((prev) => prev + 1);
-                setOnTransition(true);
+                setIsOnTransition(true);
                 setWithTransition(true);
               }}
               className="border border-solid border-gray-400 rounded-md py-[10px] px-[16px]"
