@@ -3,6 +3,7 @@ import { getData } from "@/utils/getData";
 import { Card } from "@/components/Card";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/Loader";
+import Link from "next/link";
 
 export default function BlogPage(params) {
   const [blogs, setBlogs] = useState([]);
@@ -43,12 +44,14 @@ export default function BlogPage(params) {
             <div className="grid grid-cols-3 gap-[20px]">
               {blogs.map((blog) => {
                 return (
-                  <Card
-                    pic={blog["cover_image"]}
-                    title={blog.title}
-                    date={blog["readable_publish_date"]}
-                    category={blog["type_of"]}
-                  />
+                  <Link href={`/blogs/${blog.id}`} key={blog.id}>
+                    <Card
+                      pic={blog["cover_image"]}
+                      title={blog.title}
+                      date={blog["readable_publish_date"]}
+                      category={blog["type_of"]}
+                    />
+                  </Link>
                 );
               })}
             </div>

@@ -30,13 +30,20 @@ export default function Home() {
     getBlogs();
   }, [id]);
   return (
-    <div>
+    <div className=" m-auto py-[80px]">
       {isLoading && <Loader />}
       {error && <h2>{error}</h2>}
       {!isLoading && !error && (
-        <div>
-          <div>{blogs.title}</div>
-          <div className="text-red-100">{blogs.slug}</div>
+        <div className="flex flex-col gap-[32px] m-auto max-w-[1215px]">
+          <div className="font-semibold text-4xl">{blogs.title}</div>
+          <div>
+            <p>{blogs["readable_publish_date"]}</p>
+          </div>
+          <img className="" src={blogs["cover_image"]} />
+          <p
+            className="text-xl flex flex-col gap-[32px] flex-wrap font-normal"
+            dangerouslySetInnerHTML={{ __html: blogs.body_html }}
+          ></p>
         </div>
       )}
     </div>

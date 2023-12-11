@@ -4,17 +4,20 @@ import { Card } from "@/components/Card";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/Loader";
 
+const tabs = ["All", "Design", "Travel", "Fashion", "Technology", "Branding"];
+
 export function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [pages, setPages] = useState(9);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
   useEffect(() => {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?per_page=${pages}&page=6
+          await getData(`https://dev.to/api/articles?per_page=${pages}&tag=${activeTab.toLowerCase()}
         `);
         console.log(data);
         setBlogs(data);
@@ -26,11 +29,12 @@ export function Blog() {
     };
 
     getBlogs();
-  }, [pages]);
+  }, [pages, activeTab]);
 
   function morePages() {
     setPages(pages + 3);
   }
+
   return (
     <div className="max-w-[1215px] py-[48px] m-auto">
       {isLoading && <Loader />}
@@ -40,18 +44,20 @@ export function Blog() {
           <div className="flex flex-col gap-[32px]">
             <h2 className="font-bold text-2xl">All Blog Post</h2>
             <div className="flex justify-between">
-              <div className="flex gap-[20px] text-xs font-bold text-[#495057] ">
-                <a
-                  className="hover:text-[#D4A373]"
-                  href="https://www.rfc-editor.org/rfc/rfc9110#HEAD"
-                >
-                  All
-                </a>
-                <a className="hover:text-[#D4A373]">Design</a>
-                <a className="hover:text-[#D4A373]">Travel</a>
-                <a className="hover:text-[#D4A373]">Fashion</a>
-                <a className="hover:text-[#D4A373]">Technology</a>
-                <a className="hover:text-[#D4A373]">Branding</a>
+              <div className="flex gap-[20px] text-xs font-bold  cursor-pointer">
+                {tabs.map((item) => (
+                  <div
+                    onClick={() => {
+                      setActiveTab(item);
+                    }}
+                    key={item}
+                    style={{
+                      color: item === activeTab ? "orange" : "black",
+                    }}
+                  >
+                    {item}
+                  </div>
+                ))}
               </div>
               <a
                 href="/blogs"
@@ -65,7 +71,8 @@ export function Blog() {
                 return (
                   <a href={`/blogs/${blog.id}`} key={blog.id}>
                     <Card
-                      pic={blog["cover_image"]}
+                      // category={setCategory}
+                      pic={blog.cover_image}
                       title={blog.title}
                       date={blog["readable_publish_date"]}
                       category={blog["type_of"]}

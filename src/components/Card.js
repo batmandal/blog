@@ -2,7 +2,7 @@
 export const Card = (props) => {
   return (
     <div
-      className="p-[16px] gap-[16px] flex flex-col border-gray-300 border-solid border-2 rounded-xl "
+      className="p-[16px] gap-[16px] flex flex-col border-gray-300 border-solid border-2 rounded-xl h-full justify-center"
       // id={props.id}
     >
       <div>

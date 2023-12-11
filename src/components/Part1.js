@@ -16,7 +16,7 @@ export function Page1(props) {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?top3&per_page=${pages}
+          await getData(`https://dev.to/api/articles?top3&per_page=${pages}&page=4
         `);
         console.log(data);
         setBlogs(data);
@@ -61,22 +61,26 @@ export function Page1(props) {
             >
               {blogs.map((blog) => {
                 return (
-                  <TopBlog
-                    pic={blog["cover_image"]}
-                    title={blog.title}
-                    date={blog["readable_publish_date"]}
-                    category={blog["type_of"]}
-                  />
+                  <a href={`/blogs/${blog.id}`} key={blog.id}>
+                    <TopBlog
+                      pic={blog["cover_image"]}
+                      title={blog.title}
+                      date={blog["readable_publish_date"]}
+                      category={blog["type_of"]}
+                    />
+                  </a>
                 );
               })}
               {blogs.map((blog) => {
                 return (
-                  <TopBlog
-                    pic={blog["cover_image"]}
-                    title={blog.title}
-                    date={blog["readable_publish_date"]}
-                    category={blog["type_of"]}
-                  />
+                  <a href={`/blogs/${blog.id}`} key={blog.id}>
+                    <TopBlog
+                      pic={blog["cover_image"]}
+                      title={blog.title}
+                      date={blog["readable_publish_date"]}
+                      category={blog["type_of"]}
+                    />
+                  </a>
                 );
               })}
             </div>

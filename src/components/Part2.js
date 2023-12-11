@@ -13,7 +13,7 @@ export function Trending(params) {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?top3&per_page=${pages}&page=7
+          await getData(`https://dev.to/api/articles?top=4&per_page=${pages}&page=7
         `);
         console.log(data);
         setBlogs(data);
@@ -37,11 +37,13 @@ export function Trending(params) {
           <div className="grid grid-cols-4 gap-[24px]  ">
             {blogs.map((blog) => {
               return (
-                <Trend
-                  title={blog.title}
-                  pic={blog["cover_image"]}
-                  category={blog["type_of"]}
-                />
+                <a href={`/blogs/${blog.id}`} key={blog.id}>
+                  <Trend
+                    title={blog.title}
+                    pic={blog.cover_image}
+                    category={blog["type_of"]}
+                  />
+                </a>
               );
             })}
           </div>
