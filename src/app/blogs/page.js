@@ -15,7 +15,7 @@ export default function BlogPage(params) {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?per_page=${pages}&page=6
+          await getData(`https://dev.to/api/articles?per_page=${pages}
         `);
         console.log(data);
         setBlogs(data);

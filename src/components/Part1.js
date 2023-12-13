@@ -16,7 +16,7 @@ export function Page1(props) {
     const getBlogs = async () => {
       try {
         const data =
-          await getData(`https://dev.to/api/articles?top3&per_page=${pages}&page=4
+          await getData(`https://dev.to/api/articles?per_page=${pages}&top=4
         `);
         console.log(data);
         setBlogs(data);

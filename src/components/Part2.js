@@ -3,7 +3,7 @@ import { getData } from "@/utils/getData";
 import { useState, useEffect } from "react";
 import { Loader } from "@/components/Loader";
 
-export function Trending(params) {
+export function Trending() {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -55,9 +55,13 @@ export function Trending(params) {
 export function Trend(props) {
   return (
     <div className="grid items-end  relative rounded-xl grow aspect-square overflow-hidden">
-      <img className="bg-cover absolute w-full h-full" src={props.pic}></img>
+      <img
+        className="object-cover absolute w-full h-full "
+        src={props.pic}
+      ></img>
+      <div className="bg-black opacity-[0.3] w-full h-full absolute z-10"></div>
 
-      <div className="z-10 absolute p-[28px] grid gap-[16px]">
+      <div className="z-20 absolute p-[28px] grid gap-[16px]">
         <p className="w-fit h-fit px-[10px] py-[4px] text-white font-medium text-xs bg-[#4B6BFB] rounded-md">
           {props.category}
         </p>

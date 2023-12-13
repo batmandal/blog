@@ -1,8 +1,11 @@
 "use client";
 import { getData } from "@/utils/getData";
 import { Card } from "@/components/Card";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Loader } from "@/components/Loader";
+import Link from "next/link";
+import { valueContext } from "@/app/layout";
+// import { useSearchParams } from "next/navigation";
 
 const tabs = ["All", "Design", "Travel", "Fashion", "Technology", "Branding"];
 
@@ -12,14 +15,14 @@ export function Blog() {
   const [error, setError] = useState("");
   const [pages, setPages] = useState(9);
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const { query, setQuery } = useContext(valueContext);
 
   useEffect(() => {
     const getBlogs = async () => {
       try {
-        const data =
-          await getData(`https://dev.to/api/articles?per_page=${pages}&tag=${activeTab.toLowerCase()}
-        `);
-        console.log(data);
+        const data = await getData(
+          `https://dev.to/api/articles?per_page=${pages}&tag=${activeTab.toLowerCase()}`
+        );
         setBlogs(data);
       } catch (err) {
         setError("Error, please try again");
@@ -67,19 +70,20 @@ export function Blog() {
               </a>
             </div>
             <div className="grid grid-cols-3 gap-[20px]">
-              {blogs.map((blog) => {
-                return (
-                  <a href={`/blogs/${blog.id}`} key={blog.id}>
-                    <Card
-                      // category={setCategory}
-                      pic={blog.cover_image}
-                      title={blog.title}
-                      date={blog["readable_publish_date"]}
-                      category={blog["type_of"]}
-                    />
-                  </a>
-                );
-              })}
+              {blogs
+                .filter((blog) => blog.title.includes(query))
+                .map((blog) => {
+                  return (
+                    <Link href={`/blogs/${blog.id}`} key={blog.title}>
+                      <Card
+                        pic={blog["cover_image"]}
+                        title={blog.title}
+                        date={blog["readable_publish_date"]}
+                        category={blog["type_of"]}
+                      />
+                    </Link>
+                  );
+                })}
             </div>
             <button
               className="px-[20px] py-[12px] text-[#696A75] border m-auto w-fit h-fit border-solid rounded-md border-[#696A754D] hover:bg-[#4B6BFB0D] hover:text-[#4B6BFB] "
